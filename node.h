@@ -1,14 +1,16 @@
-#include <iostream>
+//Kyle Werstlein
+//12/6/19
+//Linked List
 
-using namespace std;
+#include <iostream>
 
 class Node{
  public:
   Node();
   ~Node();
-  void setValue();
+  void setValue(int newvalue);
   int getValue();
-  void setNext();
+  void setNext(Node* nextnext);
   Node* getNext();
  private:
   int value;
