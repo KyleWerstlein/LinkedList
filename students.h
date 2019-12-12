@@ -3,16 +3,19 @@
 //Linked List
 
 #include <iostream>
+#include <vector>
+
+using namespace std;
 
 class Student{
  public:
   Student();
   ~Student();
-  void setName(char newname[50]);
-  char* getName();
+  void setName(char newname[70]);
+  vector<char> getName();
   void setId(int newId);
   int getId();
  private:
-  char name[50];
+  vector<char> name;
   int id;
 };
