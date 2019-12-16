@@ -1,21 +1,21 @@
+#include<vector>
 #include "students.h"
 #include <iostream>
-#include <vector>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
 Student::Student() {
-  
+  id = 0;
 }
 
 Student::~Student() {
-  
+  delete &id;
 }
 
-void Student::setName(char newname[70]) {
+void Student::setName(char newname[25]) {
   name.clear();
-  for (int i = 0; i <my_sizeof(newname); i++) {
+  for (int i = 0; i < 25; i++) {
     name.push_back(newname[i]);
   }
 }

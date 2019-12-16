@@ -11,7 +11,7 @@ class Student{
  public:
   Student();
   ~Student();
-  void setName(char newname[70]);
+  void setName(char newname[25]);
   vector<char> getName();
   void setId(int newId);
   int getId();
