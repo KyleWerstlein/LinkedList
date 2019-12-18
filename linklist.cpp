@@ -7,7 +7,7 @@
 #include "students.h"
 #include <cstring>
 
-void print(vector<Node*> nodes, vector<Student*> students, int id);
+void print1(vector<Node*> nodes, vector<Student*> students, int nodeCount, int id);
 
 using namespace std;
 
@@ -20,7 +20,8 @@ int main() {
   while(isActive) {
     cout << "What would you like to do?" << endl;
     cout << "ADD, DELETE, PRINT, QUIT" << endl;
-    cin.getline(input, 7, '\n');
+    cin.getline(input, 8, '\n');
+    //cin.get();
     if(strcmp(input, "QUIT") == 0) {
 	isActive = false;
       }
@@ -35,20 +36,32 @@ int main() {
 	current->setName(input);
 	nodes.push_back(currentNode);
 	students.push_back(current);
-	if(nodeCount > 2){
+	if(nodeCount < 2){
 	  nodes[nodeCount - 1]->setNext(currentNode);
 	}
       }
-      else if(strcmp(input, "PRINT") == 0) {
-	print(nodes, students, 1);
-      }
+	  else if(strcmp(input, "PRINT") == 0) {
+	print1(nodes, students, nodeCount, 1);
+    }
+      
   }
   return 0;
 }
 
-void print(vector<Node*> nodes, vector<Student*> students, int id) {
+void print1(vector<Node*> nodes, vector<Student*> students, int nodeCount, int id) {
   Node* currentNode = nodes[id];
-  if(currentNode->getNext != NULL) {
-    cout << "test";
+  if(nodeCount < 2) {
+    cout << "You need at least two entries" << endl;
+  }
+  else {
+    //if(id == 1) {
+    char name[50] = students[i]
+    //cout << students.at(id)->getName() << endl;
+      id++;
+      if(currentNode->getNext() != NULL) {
+	print1(nodes, students, nodeCount, id);
+      }
+      //cout << currentNode->getNext->getName();
+      //}
   }
 }
