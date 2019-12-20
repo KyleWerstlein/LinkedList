@@ -6,12 +6,12 @@
 
 class Node{
  public:
-  Node();
-  ~Node();
-  void setValue(int newvalue);
-  int getValue();
-  void setNext(Node* nextnext);
-  Node* getNext();
+  Node(); // constructor
+  ~Node(); // destructor
+  void setValue(int newvalue); // change the number of value
+  int getValue(); // return value
+  void setNext(Node* nextnext); // change next node
+  Node* getNext(); // return next node
  private:
   int value;
   Node* next;

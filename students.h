@@ -9,12 +9,12 @@ using namespace std;
 
 class Student{
  public:
-  Student();
-  ~Student();
-  void setName(char newname[25]);
-  vector<char> getName();
-  void setId(int newId);
-  int getId();
+  Student(); // constructor
+  ~Student(); // destructor
+  void setName(char newname[25]); // change name
+  vector<char> getName(); // return name
+  void setId(int newId); // change id
+  int getId(); // return id
  private:
   vector<char> name;
   int id;
