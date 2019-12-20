@@ -6,28 +6,28 @@
 #include "node.h"
 #include "students.h"
 
-Node::Node() {
-  value = 0;
-  next = NULL;
+Node::Node(Student* student) {
+  node = NULL;
+  student = student;
 }
 
 Node::~Node() {
-  delete &value;
-  next = NULL;
+  delete &student;
+  delete &node;
 }
 
-void Node::setValue(int newvalue) {
-  value = newvalue;
+/*void Node::setStudent(Student* newStudent) {
+  student = newStudent;
+  }*/
+
+Student* Node::getStudent() {
+  return student;
 }
 
-int Node::getValue() {
-  return value;
-}
-
-void Node::setNext(Node* nextnext) {
-  next = nextnext;
+void Node::setNext(Node* nextNode) {
+  node = nextNode;
 }
 
 Node* Node::getNext() {
-  return next;
+  return node;
 }

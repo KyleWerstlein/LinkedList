@@ -27,8 +27,8 @@ int main() {
       }
       else if (strcmp(input, "ADD") == 0) {
 	Student* current = new Student();
-	Node* currentNode = new Node();
-	currentNode->setValue(nodeCount);
+	Node* currentNode = new Node(current);
+	//currentNode->setValue(nodeCount);
 	current->setId(nodeCount);
 	nodeCount++;
 	cout << "What is the student's name?" << endl;
@@ -36,9 +36,6 @@ int main() {
 	current->setName(input);
 	nodes.push_back(currentNode);
 	students.push_back(current);
-	if(nodeCount < 2){
-	  nodes[nodeCount - 1]->setNext(currentNode);
-	}
       }
 	  else if(strcmp(input, "PRINT") == 0) {
 	print1(nodes, students, nodeCount, 1);
@@ -55,7 +52,7 @@ void print1(vector<Node*> nodes, vector<Student*> students, int nodeCount, int i
   }
   else {
     //if(id == 1) {
-    char name[50] = students[i]
+    //char name[50] = students[i]
     //cout << students.at(id)->getName() << endl;
       id++;
       if(currentNode->getNext() != NULL) {
