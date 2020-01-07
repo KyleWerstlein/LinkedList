@@ -1,7 +1,7 @@
 #include<vector>
 #include "students.h"
 #include <iostream>
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -14,13 +14,15 @@ Student::~Student() {
 }
 
 void Student::setName(char newname[25]) {
-  name.clear();
   for (int i = 0; i < 25; i++) {
-    name.push_back(newname[i]);
+    name[i] = ' ';
+  }
+  for (int i = 0; i <25; i++) {
+    name[i] = newname[i];
   }
 }
 
-vector<char> Student::getName() {
+char* Student::getName() {
   return name;
 }
 

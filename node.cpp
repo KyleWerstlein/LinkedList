@@ -4,11 +4,10 @@
 
 #include <iostream>
 #include "node.h"
-#include "students.h"
 
-Node::Node(Student* student) {
+Node::Node(Student* student1) {
   node = NULL;
-  student = student;
+  student = student1;
 }
 
 Node::~Node() {
