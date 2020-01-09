@@ -8,6 +8,8 @@
 
 
 void print1(Node* firstNode);
+void delete1(Node* node, int nodeCount, Node* firstNode);
+Node* findNode(int id, Node* firstNode, Student* newStudent);
 
 using namespace std;
 
@@ -33,7 +35,7 @@ int main() {
 	current->setId(nodeCount);
 	Node* currentNode = new Node(current);
 	if(nodeCount > 0) {
-	  currentNode->setNext(previousNode);
+	  previousNode->setNext(currentNode);
 	}
 	previousNode = currentNode;
 	nodeCount++;
@@ -45,12 +47,39 @@ int main() {
       else if(strcmp(input, "PRINT") == 0) {
 	print1(firstNode);
       }
+      else if(strcmp(input, "DELETE") == 0) {
+	delete1(nodeCount, firstNode);
+      }
   }
   return 0;
 }
 
 void print1(Node* firstNode) {
-  while(firstNode->getNext != NULL) {
-    
+  cout << firstNode->getStudent()->getName() << ", " << endl;
+  if(firstNode->getNext() != NULL) {
+    print1(firstNode->getNext());
+  }
+}
+
+void delete1(int nodeCount, Node* firstNode) {
+  char input[25];
+  Node* node;
+  Node* newNext = node->getNext();
+  cout << "Which student would you like to delete? (Case sensative)" << endl;
+  cin >> input;
+  for(int i = 0; i < nodeCount; i++) {
+    if(strcmp(node->getStudent()->getName(), input) == 0) {
+      findNode(node->getStudent()->getId() - 1, firstNode, newNext);
+    }
+  }
+}
+
+Node* findNode(int id, Node* firstNode, Node* newNext) {
+  if(firstNode->getStudent()->getId() == id) {
+    delete firstNode->getNext();
+    firstNode->setNext(newNext);
+  }
+  else {
+    findNode(id, firstNode->getNext());
   }
 }

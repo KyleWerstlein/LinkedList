@@ -15,10 +15,6 @@ Node::~Node() {
   delete &node;
 }
 
-/*void Node::setStudent(Student* newStudent) {
-  student = newStudent;
-  }*/
-
 Student* Node::getStudent() {
   return student;
 }
