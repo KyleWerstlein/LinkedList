@@ -8,8 +8,8 @@
 
 
 void print1(Node* firstNode);
-void delete1(Node* node, int nodeCount, Node* firstNode);
-Node* findNode(int id, Node* firstNode, Student* newStudent);
+void delete1(int nodeCount, Node* node);
+Node* findNode(int id, Node* firstNode, Node* newNext);
 
 using namespace std;
 
@@ -69,7 +69,7 @@ void delete1(int nodeCount, Node* firstNode) {
   cin >> input;
   for(int i = 0; i < nodeCount; i++) {
     if(strcmp(node->getStudent()->getName(), input) == 0) {
-      findNode(node->getStudent()->getId() - 1, firstNode, newNext);
+      findNode(node->getStudent()->getId() - 1, firstNode, node->getNext());
     }
   }
 }
@@ -80,6 +80,6 @@ Node* findNode(int id, Node* firstNode, Node* newNext) {
     firstNode->setNext(newNext);
   }
   else {
-    findNode(id, firstNode->getNext());
+    findNode(id, firstNode->getNext(), newNext);
   }
 }
