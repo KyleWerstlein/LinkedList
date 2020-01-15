@@ -5,6 +5,7 @@
 #include <iostream>
 #include "node.h"
 #include <cstring>
+#include <iomanip>
 
 
 void print1(Node* firstNode);
@@ -19,6 +20,7 @@ int main() {
   int nodeCount = 0;
   Node* previousNode = 0;
   Node* firstNode = 0;
+  float gpaInput = 0;
   while(isActive) {
     cout << "What would you like to do?" << endl;
     cout << "ADD, DELETE, PRINT, QUIT" << endl;
@@ -33,6 +35,9 @@ int main() {
 	Student* current = new Student();
 	current->setName(input);
 	current->setId(nodeCount);
+	cout << "What is the student's GPA?";
+	cin >> gpaInput;
+	current->setGPA(gpaInput);
 	Node* currentNode = new Node(current);
 	if(nodeCount > 0) {
 	  previousNode->setNext(currentNode);
@@ -55,26 +60,34 @@ int main() {
 }
 
 void print1(Node* firstNode) {
-  cout << firstNode->getStudent()->getName() << ", " << endl;
+  cout << "Name: " << firstNode->getStudent()->getName() << endl;
+  cout << "ID: " << firstNode->getStudent()->getId() << endl;
+  cout <<  "GPA: " << fixed << setprecision(2) << firstNode->getStudent()->getGPA() << endl;
+  cout << endl;
   if(firstNode->getNext() != NULL) {
     print1(firstNode->getNext());
   }
 }
 
 void delete1(int nodeCount, Node* firstNode) {
-  char input[25];
-  Node* node;
+  int input;
+  Node* node = firstNode;
   Node* newNext = node->getNext();
-  cout << "Which student would you like to delete? (Case sensative)" << endl;
+  cout << "Enter the ID of the student you would like to delete." << endl;
   cin >> input;
-  for(int i = 0; i < nodeCount; i++) {
-    if(strcmp(node->getStudent()->getName(), input) == 0) {
+  cout << "input: " << input << endl;
+  /*for(int i = 0; i < nodeCount; i++) {
+    if(node->getStudent()->getId() == input) {
       findNode(node->getStudent()->getId() - 1, firstNode, node->getNext());
     }
+    }*/
+  while(node->getStudent()->getId() != input && input <= nodeCount) {
+    cout << "newtest" << endl;
   }
 }
 
 Node* findNode(int id, Node* firstNode, Node* newNext) {
+  cout << "test" << endl;
   if(firstNode->getStudent()->getId() == id) {
     delete firstNode->getNext();
     firstNode->setNext(newNext);

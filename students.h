@@ -14,7 +14,10 @@ class Student{
   char* getName(); // return name
   void setId(int newId); // change id
   int getId(); // return id
+  float getGPA();
+  void setGPA(float newGPA);
  private:
   char name[25];
   int id;
+  float gpa;
 };
