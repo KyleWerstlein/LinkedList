@@ -16,8 +16,11 @@ class Student{
   int getId(); // return id
   float getGPA();
   void setGPA(float newGPA);
+  void setLastName(char newLast[25]);
+  char* getLastName();
  private:
   char name[25];
+  char lastName[25];
   int id;
   float gpa;
 };

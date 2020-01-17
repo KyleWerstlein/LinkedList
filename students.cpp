@@ -6,6 +6,9 @@ using namespace std;
 
 Student::Student() {
   id = 0;
+  for(int i = 0; i < 25; i++) {
+    lastName[i] = ' ';
+  }
 }
 
 Student::~Student() {
@@ -26,6 +29,16 @@ void Student::setName(char newname[25]) {
   }
   for (int i = 0; i <25; i++) {
     name[i] = newname[i];
+  }
+}
+
+char* Student::getLastName() {
+  return lastName;
+}
+
+void Student::setLastName(char newLast[25]) {
+  for (int i = 0; i < 25; i++) {
+    lastName[i] = newLast[i];
   }
 }
 

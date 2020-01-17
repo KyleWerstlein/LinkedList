@@ -10,7 +10,7 @@
 
 void print1(Node* firstNode);
 void delete1(int nodeCount, Node* node);
-Node* findNode(int id, Node* firstNode, Node* newNext);
+int findNode(int id, Node* firstNode, Node* newNext, int nodeCount);
 
 using namespace std;
 
@@ -20,20 +20,25 @@ int main() {
   int nodeCount = 0;
   Node* previousNode = 0;
   Node* firstNode = 0;
+  Node* averageNode = 0;
   float gpaInput = 0;
+  float gpaAverage = 0;
   while(isActive) {
     cout << "What would you like to do?" << endl;
-    cout << "ADD, DELETE, PRINT, QUIT" << endl;
+    cout << "ADD, DELETE, PRINT, QUIT, AVERAGE" << endl;
+    cin.clear();
     cin.getline(input, 8, '\n');
-    //cin.get();
     if(strcmp(input, "QUIT") == 0) {
 	isActive = false;
       }
       else if (strcmp(input, "ADD") == 0) {
-	cout << "What is the student's name?" << endl;
+	cout << "What is the student's first name?" << endl;
 	cin.get(input, 25);
 	Student* current = new Student();
+	cout << "What is the student's last name?" << endl;
 	current->setName(input);
+	cin >> input;
+	current->setLastName(input);
 	current->setId(nodeCount);
 	cout << "What is the student's GPA?";
 	cin >> gpaInput;
@@ -49,8 +54,22 @@ int main() {
 	  firstNode = previousNode;
 	}
       }
+      else if(strcmp(input, "AVERAGE") == 0) {
+	averageNode = firstNode;
+	for(int i = 0; i < nodeCount; i++) {
+	  gpaAverage = gpaAverage + averageNode->getStudent()->getGPA();
+	  averageNode = averageNode->getNext();
+	}
+	gpaAverage = gpaAverage / nodeCount;
+	cout << fixed << setprecision(2) << "Average: " << gpaAverage << endl;
+      }
       else if(strcmp(input, "PRINT") == 0) {
-	print1(firstNode);
+		  if(nodeCount > 1) {
+			 print1(firstNode); 
+		  }
+		  else {
+			 cout << "Please enter more than one student first." << endl;
+		  }
       }
       else if(strcmp(input, "DELETE") == 0) {
 	delete1(nodeCount, firstNode);
@@ -60,7 +79,7 @@ int main() {
 }
 
 void print1(Node* firstNode) {
-  cout << "Name: " << firstNode->getStudent()->getName() << endl;
+  cout << "Name: " << firstNode->getStudent()->getName() << " " << firstNode->getStudent()->getLastName() << endl;
   cout << "ID: " << firstNode->getStudent()->getId() << endl;
   cout <<  "GPA: " << fixed << setprecision(2) << firstNode->getStudent()->getGPA() << endl;
   cout << endl;
@@ -75,24 +94,28 @@ void delete1(int nodeCount, Node* firstNode) {
   Node* newNext = node->getNext();
   cout << "Enter the ID of the student you would like to delete." << endl;
   cin >> input;
-  cout << "input: " << input << endl;
   /*for(int i = 0; i < nodeCount; i++) {
     if(node->getStudent()->getId() == input) {
       findNode(node->getStudent()->getId() - 1, firstNode, node->getNext());
     }
     }*/
-  while(node->getStudent()->getId() != input && input <= nodeCount) {
-    cout << "newtest" << endl;
-  }
+  findNode(input, firstNode, node->getNext(), nodeCount);
 }
 
-Node* findNode(int id, Node* firstNode, Node* newNext) {
+int findNode(int id, Node* firstNode, Node* newNext, int nodeCount) {
   cout << "test" << endl;
+  cout << id << endl;
+  cout << firstNode->getStudent()->getId() << endl;
   if(firstNode->getStudent()->getId() == id) {
     delete firstNode->getNext();
     firstNode->setNext(newNext);
+    nodeCount--;
+    return nodeCount;
+  }
+  else if(id > nodeCount) {
+    cout << "Invalid ID" << endl;
   }
   else {
-    findNode(id, firstNode->getNext(), newNext);
+    findNode(id, firstNode->getNext(), newNext, nodeCount);
   }
 }
