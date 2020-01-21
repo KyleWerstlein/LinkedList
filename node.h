@@ -3,6 +3,9 @@
  * another Node. This allows for a long chain of Nodes, each one pointing to the next. Each node may
  * also contain a Student, 
  */
+ 
+ //GREG'S CODE
+ 
 #ifndef NODE_H
 #define NODE_H
 

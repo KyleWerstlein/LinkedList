@@ -8,14 +8,14 @@
 #include <iomanip>
 
 
-void print1(Node* firstNode);
-void delete1(int nodeCount, Node* node);
-int findNode(int id, Node* firstNode, Node* newNext, int nodeCount);
+void print1(Node* firstNode); // print all nodes
+void delete1(int nodeCount, Node* node); // delete node
+int findNode(int id, Node* firstNode, Node* newNext, int nodeCount); // walk through the nodes until the right one is found
 
 using namespace std;
 
 int main() {
-  bool isActive = true;
+  bool isActive = true; // variables
   char input[25];
   int nodeCount = 0;
   Node* previousNode = 0;
@@ -23,7 +23,7 @@ int main() {
   Node* averageNode = 0;
   float gpaInput = 0;
   float gpaAverage = 0;
-  while(isActive) {
+  while(isActive) { // select action
     cout << "What would you like to do?" << endl;
     cout << "ADD, DELETE, PRINT, QUIT, AVERAGE" << endl;
     cin.clear();
@@ -103,7 +103,6 @@ void delete1(int nodeCount, Node* firstNode) {
 }
 
 int findNode(int id, Node* firstNode, Node* newNext, int nodeCount) {
-  cout << "test" << endl;
   cout << id << endl;
   cout << firstNode->getStudent()->getId() << endl;
   if(firstNode->getStudent()->getId() == id) {
@@ -116,6 +115,6 @@ int findNode(int id, Node* firstNode, Node* newNext, int nodeCount) {
     cout << "Invalid ID" << endl;
   }
   else {
-    findNode(id, firstNode->getNext(), newNext, nodeCount);
+    findNode(id, firstNode->getNext(), newNext, nodeCount); // go until it reaches the correct node
   }
 }

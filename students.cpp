@@ -15,6 +15,8 @@ Student::~Student() {
   delete &id;
 }
 
+// getters and setters
+
 void Student::setGPA(float newGPA) {
   gpa = newGPA;
 }

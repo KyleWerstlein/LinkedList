@@ -15,6 +15,8 @@ Node::~Node() {
   delete &node;
 }
 
+// getters and setters
+
 Student* Node::getStudent() {
   return student;
 }
